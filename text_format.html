@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title id="title">Text Component Builder</title>
+<link rel="shortcut icon" href="icon\Test_Block_Start.png" id="icon_data">
+<script>
+function set_language()
+{
+    var lang = document.getElementById("language").value;
+    if(lang == "eng")
+    {
+        document.getElementById("title").innerHTML = "Text Component Builder";
+        document.getElementById("setting").innerHTML = "Setting";
+        document.getElementById("put_element").innerHTML = "Put your element here:";
+        document.getElementById("element_data_information").innerHTML = "Element";
+        document.getElementById("type-text").innerHTML = "Text Only";
+        document.getElementById("type-translatable").innerHTML = "Translatable";
+        document.getElementById("text-text").placeholder = "Please input the text...";
+        document.getElementById("translate-text").placeholder = "Please input the translate key...";
+        document.getElementById("translate-fallback").placeholder = "Please input the fallback...";
+        document.getElementById("translate-with").innerHTML = "Add a array of text component:";
+        document.getElementById("translate-component").placeholder = "Please input the text component...";
+        document.getElementById("type-keybind").innerHTML = "Key Bind";
+        document.getElementById("keybind-text").placeholder = "Please input the code of key...";
+        document.getElementById("type-scoreboard").innerHTML = "Scoreboard";
+        document.getElementById("scoreboard-text").placeholder = "Please input the owner of the score...";
+        document.getElementById("scoreboard-object").placeholder = "Please input the name of the scoreboard...";
+        document.getElementById("type-selector").innerHTML = "Entity Name";
+        document.getElementById("selector-text").placeholder = "Please input the selector...";
+        document.getElementById("selector-separator").placeholder = "Please input the text component of the separator...";
+        document.getElementById("type-object").innerHTML = "Texture";
+        document.getElementById("object-atlas").placeholder = "Please input the atlas...";
+        document.getElementById("object-sprite").placeholder = "Please input the texture ID...";
+        document.getElementById("style_data_information").innerHTML = "Style";
+        document.getElementById("style-colour").innerHTML = "Colour";
+        document.getElementById("style-colour-none").innerHTML = "None";
+        document.getElementById("style-colour-name").innerHTML = "Colour Name";
+        document.getElementById("style-colour-hex").innerHTML = "Colour HEX";
+        document.getElementById("style-colour-0").innerHTML = "Black";
+        document.getElementById("style-colour-1").innerHTML = "Dark Blue";
+        document.getElementById("style-colour-2").innerHTML = "Dark Green";
+        document.getElementById("style-colour-3").innerHTML = "Dark Aqua";
+        document.getElementById("style-colour-4").innerHTML = "Dark Red";
+        document.getElementById("style-colour-5").innerHTML = "Dark Purple";
+        document.getElementById("style-colour-6").innerHTML = "Gold";
+        document.getElementById("style-colour-7").innerHTML = "Grey";
+        document.getElementById("style-colour-8").innerHTML = "Dark Grey";
+        document.getElementById("style-colour-9").innerHTML = "Blue";
+        document.getElementById("style-colour-a").innerHTML = "Green";
+        document.getElementById("style-colour-b").innerHTML = "Aqua";
+        document.getElementById("style-colour-c").innerHTML = "Red";
+        document.getElementById("style-colour-d").innerHTML = "Light Purple";
+        document.getElementById("style-colour-e").innerHTML = "Yellow";
+        document.getElementById("style-colour-f").innerHTML = "White";
+        document.getElementById("style-font").innerHTML = "Font";
+        document.getElementById("style-font-text").placeholder = "Please input the font...";
+        document.getElementById("style-text_style").innerHTML = "Text Style";
+        document.getElementById("style-text_style-bold").innerHTML = "Bold";
+        document.getElementById("style-text_style-italic").innerHTML = "Italic";
+        document.getElementById("style-text_style-underlined").innerHTML = "Underlined";
+        document.getElementById("style-text_style-strikethrough").innerHTML = "Strike Through";
+        document.getElementById("style-text_style-obfuscated").innerHTML = "Obfuscated";
+        document.getElementById("action_data_information").innerHTML = "Activity";
+        document.getElementById("action-click").innerHTML = "Click";
+        document.getElementById("action-click-none").innerHTML = "None";
+        document.getElementById("action-click-change_page").innerHTML = "Change Page";
+        document.getElementById("action-click-copy_to_clipboard").innerHTML = "Copy Text";
+        document.getElementById("action-click-open_file").innerHTML = "Open File";
+        document.getElementById("action-click-open_url").innerHTML = "Open Website";
+        document.getElementById("action-click-run_command").innerHTML = "Run Command";
+        document.getElementById("action-click-show_dialog").innerHTML = "Show Dialog";
+        document.getElementById("action-click-suggest_command").innerHTML = "Suggest Command";
+        document.getElementById("action-click-page-text").innerHTML = "Page Number";
+        document.getElementById("action-click-show_dialog-dialog").placeholder = "Please input the ID or JSON dialog...";
+        document.getElementById("action-hover").innerHTML = "Hover";
+        document.getElementById("action-hover-text").innerHTML = "Show Text";
+        document.getElementById("action-hover-show_text").placeholder = "Empty: None";
+        document.getElementById("result").innerHTML = "Result:";
+        document.getElementById("json_show_type-true").innerHTML = "Show Type";
+        document.getElementById("json_show_type-false").innerHTML = "Hide Type";
+        document.getElementById("json_show_type-false").innerHTML = "Hide Type";
+        document.getElementById("calcuclate").innerHTML = "Calcuclate";
+        document.getElementById("use_unchecked-used").innerHTML = "Use Unchecked";
+        document.getElementById("use_unchecked-none").innerHTML = "Use Checked Only";
+    }
+    else if(lang == "zhc")
+    {
+        document.getElementById("title").innerHTML = "文本组件构造器";
+        document.getElementById("setting").innerHTML = "设置";
+        document.getElementById("put_element").innerHTML = "在这里放置你的元素：";
+        document.getElementById("element_data_information").innerHTML = "元素";
+        document.getElementById("type-text").innerHTML = "纯文本";
+        document.getElementById("type-translatable").innerHTML = "译文";
+        document.getElementById("text-text").placeholder = "请输入文本……";
+        document.getElementById("translate-text").placeholder = "请输入翻译键……";
+        document.getElementById("translate-fallback").placeholder = "请输入回落文本……";
+        document.getElementById("translate-with").innerHTML = "添加的文本组件数组：";
+        document.getElementById("translate-component").placeholder = "请输入文本组件……";
+        document.getElementById("type-keybind").innerHTML = "按键绑定";
+        document.getElementById("keybind-text").placeholder = "请输入按键的翻译键……";
+        document.getElementById("type-scoreboard").innerHTML = "记分板";
+        document.getElementById("scoreboard-text").placeholder = "请输入分数持有者……";
+        document.getElementById("scoreboard-object").placeholder = "请输入记分板的名称……";
+        document.getElementById("type-selector").innerHTML = "实体名称";
+        document.getElementById("selector-text").placeholder = "请输入实体选择器……";
+        document.getElementById("selector-separator").placeholder = "请输入分隔符的文本组件……";
+        document.getElementById("type-object").innerHTML = "纹理";
+        document.getElementById("object-atlas").placeholder = "请输入纹理图集名称……";
+        document.getElementById("object-sprite").placeholder = "请输入纹理注册名……";
+        document.getElementById("style_data_information").innerHTML = "样式";
+        document.getElementById("style-colour").innerHTML = "颜色";
+        document.getElementById("style-colour-none").innerHTML = "无";
+        document.getElementById("style-colour-name").innerHTML = "颜色名称";
+        document.getElementById("style-colour-hex").innerHTML = "颜色十六进制值";
+        document.getElementById("style-colour-0").innerHTML = "黑色";
+        document.getElementById("style-colour-1").innerHTML = "深蓝色";
+        document.getElementById("style-colour-2").innerHTML = "深绿色";
+        document.getElementById("style-colour-3").innerHTML = "深青色";
+        document.getElementById("style-colour-4").innerHTML = "深红色";
+        document.getElementById("style-colour-5").innerHTML = "深紫色";
+        document.getElementById("style-colour-6").innerHTML = "金色";
+        document.getElementById("style-colour-7").innerHTML = "浅灰色";
+        document.getElementById("style-colour-8").innerHTML = "深灰色";
+        document.getElementById("style-colour-9").innerHTML = "浅蓝色";
+        document.getElementById("style-colour-a").innerHTML = "浅绿色";
+        document.getElementById("style-colour-b").innerHTML = "青色";
+        document.getElementById("style-colour-c").innerHTML = "红色";
+        document.getElementById("style-colour-d").innerHTML = "品红色";
+        document.getElementById("style-colour-e").innerHTML = "黄色";
+        document.getElementById("style-colour-f").innerHTML = "白色";
+        document.getElementById("style-font").innerHTML = "字体";
+        document.getElementById("style-font-text").placeholder = "请输入字体……";
+        document.getElementById("style-text_style").innerHTML = "文本样式";
+        document.getElementById("style-text_style-bold").innerHTML = "粗体";
+        document.getElementById("style-text_style-italic").innerHTML = "斜体";
+        document.getElementById("style-text_style-underlined").innerHTML = "下划线";
+        document.getElementById("style-text_style-strikethrough").innerHTML = "删除线";
+        document.getElementById("style-text_style-obfuscated").innerHTML = "随机字符";
+        document.getElementById("action_data_information").innerHTML = "行为";
+        document.getElementById("action-click").innerHTML = "点击";
+        document.getElementById("action-click-none").innerHTML = "无行为";
+        document.getElementById("action-click-change_page").innerHTML = "更改页码";
+        document.getElementById("action-click-copy_to_clipboard").innerHTML = "复制文本";
+        document.getElementById("action-click-open_file").innerHTML = "打开文件";
+        document.getElementById("action-click-open_url").innerHTML = "打开网站";
+        document.getElementById("action-click-run_command").innerHTML = "运行命令";
+        document.getElementById("action-click-show_dialog").innerHTML = "开对话框";
+        document.getElementById("action-click-suggest_command").innerHTML = "输入命令";
+        document.getElementById("action-click-page-text").innerHTML = "页码";
+        document.getElementById("action-click-show_dialog-dialog").placeholder = "请输入对话框的注册名或定义格式……";
+        document.getElementById("action-hover").innerHTML = "悬停";
+        document.getElementById("action-hover-text").innerHTML = "显示文本";
+        document.getElementById("action-hover-show_text").placeholder = "留空则无悬停事件";
+        document.getElementById("result").innerHTML = "结果：";
+        document.getElementById("json_show_type-true").innerHTML = "显示类型";
+        document.getElementById("json_show_type-false").innerHTML = "隐藏类型";
+        document.getElementById("calcuclate").innerHTML = "计算";
+        document.getElementById("use_unchecked-used").innerHTML = "使用未勾选";
+        document.getElementById("use_unchecked-none").innerHTML = "仅使用已勾选";
+    }
+    else if(lang == "zht")
+    {
+        document.getElementById("title").innerHTML = "文本元件構造器";
+        document.getElementById("setting").innerHTML = "設定";
+        document.getElementById("put_element").innerHTML = "在這裏放置你的元素：";
+        document.getElementById("element_data_information").innerHTML = "元素";
+        document.getElementById("type-text").innerHTML = "純文字";
+        document.getElementById("type-translatable").innerHTML = "譯文";
+        document.getElementById("text-text").placeholder = "請輸入文字……";
+        document.getElementById("translate-text").placeholder = "請輸入翻譯鍵……";
+        document.getElementById("translate-fallback").placeholder = "請輸入回落文字……";
+        document.getElementById("translate-with").innerHTML = "添加的文本元件數組：";
+        document.getElementById("translate-component").placeholder = "請輸入文本元件……";
+        document.getElementById("type-keybind").innerHTML = "按鍵綁定";
+        document.getElementById("keybind-text").placeholder = "请输入按键的翻译键……";
+        document.getElementById("type-scoreboard").innerHTML = "計分板";
+        document.getElementById("scoreboard-text").placeholder = "請輸入分數持有者……";
+        document.getElementById("scoreboard-object").placeholder = "請輸入計分板名稱……";
+        document.getElementById("type-selector").innerHTML = "實體名稱";
+        document.getElementById("selector-text").placeholder = "請輸入實體選擇器……";
+        document.getElementById("selector-separator").placeholder = "請輸入分隔符號的文本元件……";
+        document.getElementById("type-object").innerHTML = "紋理";
+        document.getElementById("object-atlas").placeholder = "請輸入紋理圖集名稱……";
+        document.getElementById("object-sprite").placeholder = "請輸入紋理注册名……";
+        document.getElementById("style_data_information").innerHTML = "樣式";
+        document.getElementById("style-colour").innerHTML = "顏色";
+        document.getElementById("style-colour-none").innerHTML = "無";
+        document.getElementById("style-colour-name").innerHTML = "顏色名稱";
+        document.getElementById("style-colour-hex").innerHTML = "顏色十六進位值";
+        document.getElementById("style-colour-0").innerHTML = "黑色";
+        document.getElementById("style-colour-1").innerHTML = "深藍色";
+        document.getElementById("style-colour-2").innerHTML = "深綠色";
+        document.getElementById("style-colour-3").innerHTML = "深青色";
+        document.getElementById("style-colour-4").innerHTML = "深紅色";
+        document.getElementById("style-colour-5").innerHTML = "深紫色";
+        document.getElementById("style-colour-6").innerHTML = "金色";
+        document.getElementById("style-colour-7").innerHTML = "淺灰色";
+        document.getElementById("style-colour-8").innerHTML = "深灰色";
+        document.getElementById("style-colour-9").innerHTML = "淺藍色";
+        document.getElementById("style-colour-a").innerHTML = "淺綠色";
+        document.getElementById("style-colour-b").innerHTML = "青色";
+        document.getElementById("style-colour-c").innerHTML = "紅色";
+        document.getElementById("style-colour-d").innerHTML = "品紅色";
+        document.getElementById("style-colour-e").innerHTML = "黃色";
+        document.getElementById("style-colour-f").innerHTML = "白色";
+        document.getElementById("style-font").innerHTML = "字體";
+        document.getElementById("style-font-text").placeholder = "請輸入字體……";
+        document.getElementById("style-text_style").innerHTML = "文字樣式";
+        document.getElementById("style-text_style-bold").innerHTML = "粗體";
+        document.getElementById("style-text_style-italic").innerHTML = "斜體";
+        document.getElementById("style-text_style-underlined").innerHTML = "底綫";
+        document.getElementById("style-text_style-strikethrough").innerHTML = "删除綫";
+        document.getElementById("style-text_style-obfuscated").innerHTML = "隨機字元";
+        document.getElementById("action_data_information").innerHTML = "行爲";
+        document.getElementById("action-click").innerHTML = "點擊";
+        document.getElementById("action-click-none").innerHTML = "無行爲";
+        document.getElementById("action-click-change_page").innerHTML = "更改頁碼";
+        document.getElementById("action-click-copy_to_clipboard").innerHTML = "複製文字";
+        document.getElementById("action-click-open_file").innerHTML = "打開文件";
+        document.getElementById("action-click-open_url").innerHTML = "打開網站";
+        document.getElementById("action-click-run_command").innerHTML = "運行命令";
+        document.getElementById("action-click-show_dialog").innerHTML = "開對話框";
+        document.getElementById("action-click-suggest_command").innerHTML = "輸入命令";
+        document.getElementById("action-click-page-text").innerHTML = "頁碼";
+        document.getElementById("action-click-show_dialog-dialog").placeholder = "請輸入對話框的注册名或定義格式……";
+        document.getElementById("action-hover").innerHTML = "懸停";
+        document.getElementById("action-hover-text").innerHTML = "顯示文字";
+        document.getElementById("action-hover-show_text").placeholder = "留空則無懸停事件";
+        document.getElementById("result").innerHTML = "結果：";
+        document.getElementById("json_show_type-true").innerHTML = "顯示類型";
+        document.getElementById("json_show_type-false").innerHTML = "隱藏類型";
+        document.getElementById("calcuclate").innerHTML = "計算";
+        document.getElementById("use_unchecked-used").innerHTML = "使用未勾選";
+        document.getElementById("use_unchecked-none").innerHTML = "僅使用已勾選";
+    }
+    else if(lang == "cht")
+    {
+        document.getElementById("title").innerHTML = "文本元件構造器";
+        document.getElementById("setting").innerHTML = "設定";
+        document.getElementById("put_element").innerHTML = "在這裡放置你的元素：";
+        document.getElementById("element_data_information").innerHTML = "元素";
+        document.getElementById("type-text").innerHTML = "純文字";
+        document.getElementById("type-translatable").innerHTML = "譯文";
+        document.getElementById("text-text").placeholder = "請輸入文字……";
+        document.getElementById("translate-text").placeholder = "請輸入翻譯鍵……";
+        document.getElementById("translate-fallback").placeholder = "請輸入回落文字……";
+        document.getElementById("translate-with").innerHTML = "添加的文本元件數組：";
+        document.getElementById("translate-component").placeholder = "請輸入文本元件……";
+        document.getElementById("type-keybind").innerHTML = "按鍵綁定";
+        document.getElementById("keybind-text").placeholder = "请输入按键的翻译键……";
+        document.getElementById("type-scoreboard").innerHTML = "計分板";
+        document.getElementById("scoreboard-text").placeholder = "請輸入分數持有者……";
+        document.getElementById("scoreboard-object").placeholder = "請輸入計分板名稱……";
+        document.getElementById("type-selector").innerHTML = "實體名稱";
+        document.getElementById("selector-text").placeholder = "請輸入實體選擇器……";
+        document.getElementById("selector-separator").placeholder = "請輸入分隔符號的文本元件……";
+        document.getElementById("type-object").innerHTML = "紋理";
+        document.getElementById("object-atlas").placeholder = "請輸入紋理圖集名稱……";
+        document.getElementById("object-sprite").placeholder = "請輸入紋理注册名……";
+        document.getElementById("style_data_information").innerHTML = "樣式";
+        document.getElementById("style-colour").innerHTML = "顏色";
+        document.getElementById("style-colour-none").innerHTML = "無";
+        document.getElementById("style-colour-name").innerHTML = "顏色名稱";
+        document.getElementById("style-colour-hex").innerHTML = "顏色十六進位值";
+        document.getElementById("style-colour-0").innerHTML = "黑色";
+        document.getElementById("style-colour-1").innerHTML = "深藍色";
+        document.getElementById("style-colour-2").innerHTML = "深綠色";
+        document.getElementById("style-colour-3").innerHTML = "深青色";
+        document.getElementById("style-colour-4").innerHTML = "深紅色";
+        document.getElementById("style-colour-5").innerHTML = "深紫色";
+        document.getElementById("style-colour-6").innerHTML = "金色";
+        document.getElementById("style-colour-7").innerHTML = "淺灰色";
+        document.getElementById("style-colour-8").innerHTML = "深灰色";
+        document.getElementById("style-colour-9").innerHTML = "淺藍色";
+        document.getElementById("style-colour-a").innerHTML = "淺綠色";
+        document.getElementById("style-colour-b").innerHTML = "青色";
+        document.getElementById("style-colour-c").innerHTML = "紅色";
+        document.getElementById("style-colour-d").innerHTML = "品紅色";
+        document.getElementById("style-colour-e").innerHTML = "黃色";
+        document.getElementById("style-colour-f").innerHTML = "白色";
+        document.getElementById("style-font").innerHTML = "字體";
+        document.getElementById("style-font-text").placeholder = "請輸入字體……";
+        document.getElementById("style-text_style").innerHTML = "文字樣式";
+        document.getElementById("style-text_style-bold").innerHTML = "粗體";
+        document.getElementById("style-text_style-italic").innerHTML = "斜體";
+        document.getElementById("style-text_style-underlined").innerHTML = "底線";
+        document.getElementById("style-text_style-strikethrough").innerHTML = "删除線";
+        document.getElementById("style-text_style-obfuscated").innerHTML = "隨機字元";
+        document.getElementById("action_data_information").innerHTML = "行為";
+        document.getElementById("action-click").innerHTML = "點擊";
+        document.getElementById("action-click-none").innerHTML = "無行為";
+        document.getElementById("action-click-change_page").innerHTML = "更改頁碼";
+        document.getElementById("action-click-copy_to_clipboard").innerHTML = "複製文字";
+        document.getElementById("action-click-open_file").innerHTML = "打開文件";
+        document.getElementById("action-click-open_url").innerHTML = "打開網站";
+        document.getElementById("action-click-run_command").innerHTML = "運行命令";
+        document.getElementById("action-click-show_dialog").innerHTML = "開對話框";
+        document.getElementById("action-click-suggest_command").innerHTML = "輸入命令";
+        document.getElementById("action-click-page-text").innerHTML = "頁碼";
+        document.getElementById("action-click-show_dialog-dialog").placeholder = "請輸入對話框的注册名或定義格式……";
+        document.getElementById("action-hover").innerHTML = "懸停";
+        document.getElementById("action-hover-text").innerHTML = "顯示文字";
+        document.getElementById("action-hover-show_text").placeholder = "留空則無懸停事件";
+        document.getElementById("result").innerHTML = "結果：";
+        document.getElementById("json_show_type-true").innerHTML = "顯示類型";
+        document.getElementById("json_show_type-false").innerHTML = "隱藏類型";
+        document.getElementById("calcuclate").innerHTML = "計算";
+        document.getElementById("use_unchecked-used").innerHTML = "使用未勾選";
+        document.getElementById("use_unchecked-none").innerHTML = "僅使用已勾選";
+    }
+    else if(lang == "lzh")
+    {
+        document.getElementById("title").innerHTML = "文素構";
+        document.getElementById("setting").innerHTML = "設";
+        document.getElementById("put_element").innerHTML = "此置君素：";
+        document.getElementById("element_data_information").innerHTML = "素";
+        document.getElementById("type-text").innerHTML = "文純";
+        document.getElementById("type-translatable").innerHTML = "譯";
+        document.getElementById("text-text").placeholder = "試書文……";
+        document.getElementById("translate-text").placeholder = "試書譯鍵……";
+        document.getElementById("translate-fallback").placeholder = "試書替文……";
+        document.getElementById("translate-with").innerHTML = "益文素組：";
+        document.getElementById("translate-component").placeholder = "試書文素……";
+        document.getElementById("type-keybind").innerHTML = "綁鍵";
+        document.getElementById("keybind-text").placeholder = "試書綁鍵碼……";
+        document.getElementById("type-scoreboard").innerHTML = "計分板";
+        document.getElementById("scoreboard-text").placeholder = "試書分數持者……";
+        document.getElementById("scoreboard-object").placeholder = "試書計分板之名……";
+        document.getElementById("type-selector").innerHTML = "實體名";
+        document.getElementById("selector-text").placeholder = "試書實體之擇……";
+        document.getElementById("selector-separator").placeholder = "試書隔符之文素……";
+        document.getElementById("type-object").innerHTML = "紋";
+        document.getElementById("object-atlas").placeholder = "試書紋集名……";
+        document.getElementById("object-sprite").placeholder = "試書紋名……";
+        document.getElementById("style_data_information").innerHTML = "樣";
+        document.getElementById("style-colour").innerHTML = "色";
+        document.getElementById("style-colour-none").innerHTML = "無";
+        document.getElementById("style-colour-name").innerHTML = "色名";
+        document.getElementById("style-colour-hex").innerHTML = "色十六進值";
+        document.getElementById("style-colour-0").innerHTML = "黑";
+        document.getElementById("style-colour-1").innerHTML = "靛";
+        document.getElementById("style-colour-2").innerHTML = "綠";
+        document.getElementById("style-colour-3").innerHTML = "黛";
+        document.getElementById("style-colour-4").innerHTML = "赤";
+        document.getElementById("style-colour-5").innerHTML = "紫";
+        document.getElementById("style-colour-6").innerHTML = "金";
+        document.getElementById("style-colour-7").innerHTML = "蒼";
+        document.getElementById("style-colour-8").innerHTML = "灰";
+        document.getElementById("style-colour-9").innerHTML = "縹";
+        document.getElementById("style-colour-a").innerHTML = "翠";
+        document.getElementById("style-colour-b").innerHTML = "青";
+        document.getElementById("style-colour-c").innerHTML = "紅";
+        document.getElementById("style-colour-d").innerHTML = "赬";
+        document.getElementById("style-colour-e").innerHTML = "黃";
+        document.getElementById("style-colour-f").innerHTML = "白";
+        document.getElementById("style-font").innerHTML = "字體";
+        document.getElementById("style-font-text").placeholder = "試書字體……";
+        document.getElementById("style-text_style").innerHTML = "文樣";
+        document.getElementById("style-text_style-bold").innerHTML = "粗";
+        document.getElementById("style-text_style-italic").innerHTML = "斜";
+        document.getElementById("style-text_style-underlined").innerHTML = "底";
+        document.getElementById("style-text_style-strikethrough").innerHTML = "除";
+        document.getElementById("style-text_style-obfuscated").innerHTML = "忽";
+        document.getElementById("action_data_information").innerHTML = "行";
+        document.getElementById("action-click").innerHTML = "擊";
+        document.getElementById("action-click-none").innerHTML = "無行";
+        document.getElementById("action-click-change_page").innerHTML = "更頁";
+        document.getElementById("action-click-copy_to_clipboard").innerHTML = "複書";
+        document.getElementById("action-click-open_file").innerHTML = "開文";
+        document.getElementById("action-click-open_url").innerHTML = "開網";
+        document.getElementById("action-click-run_command").innerHTML = "行令";
+        document.getElementById("action-click-show_dialog").innerHTML = "見話";
+        document.getElementById("action-click-suggest_command").innerHTML = "書令";
+        document.getElementById("action-click-page-text").innerHTML = "頁";
+        document.getElementById("action-click-show_dialog-dialog").placeholder = "試書話之名若式……";
+        document.getElementById("action-hover").innerHTML = "懸";
+        document.getElementById("action-hover-text").innerHTML = "示文";
+        document.getElementById("action-hover-show_text").placeholder = "空則無";
+        document.getElementById("result").innerHTML = "得：";
+        document.getElementById("json_show_type-true").innerHTML = "顯類";
+        document.getElementById("json_show_type-false").innerHTML = "隱類";
+        document.getElementById("calcuclate").innerHTML = "算";
+        document.getElementById("use_unchecked-used").innerHTML = "使未";
+        document.getElementById("use_unchecked-none").innerHTML = "僅使已";
+    }
+}
+function set_disabled()
+{
+    // INIT START;
+    // var form_element = [[],[],[]];
+    var information_get = [[],[],[]];
+    // 0 - 0.123.4.56.78.9A
+    /*form_element[0][0] = */document.getElementById("text-text");
+    /*form_element[0][1] = */document.getElementById("translate-text");
+    /*form_element[0][2] = */document.getElementById("translate-fallback");
+    /*form_element[0][3] = */document.getElementById("translate-component");
+    /*form_element[0][4] = */document.getElementById("keybind-text");
+    /*form_element[0][5] = */document.getElementById("scoreboard-text");
+    /*form_element[0][6] = */document.getElementById("scoreboard-object");
+    /*form_element[0][7] = */document.getElementById("selector-text");
+    /*form_element[0][8] = */document.getElementById("selector-separator");
+    /*form_element[0][9] = */document.getElementById("object-atlas");
+    /*form_element[0][10] = */document.getElementById("object-sprite");
+    // 1 - 0.1
+    /*form_element[1][0] = */document.getElementById("style-colour-select");
+    /*form_element[1][1] = */document.getElementById("style-colour-input");
+    // 2 - 0.1.2.3.4.5.6
+    /*form_element[2][0] = */document.getElementById("action-click-change_page-page");
+    /*form_element[2][1] = */document.getElementById("action-click-copy_to_clipboard-value");
+    /*form_element[2][2] = */document.getElementById("action-click-open_file-path");
+    /*form_element[2][3] = */document.getElementById("action-click-open_url-url");
+    /*form_element[2][4] = */document.getElementById("action-click-run_command-command");
+    /*form_element[2][5] = */document.getElementById("action-click-show_dialog-dialog");
+    /*form_element[2][6] = */document.getElementById("action-click-suggest_command-command");
+    // 0
+    information_get[0][0] = !document.getElementById("type-text-choice").checked;
+    information_get[0][1] = !document.getElementById("type-translatable-choice").checked;
+    information_get[0][2] = !document.getElementById("type-keybind-choice").checked;
+    information_get[0][3] = !document.getElementById("type-scoreboard-choice").checked;
+    information_get[0][4] = !document.getElementById("type-selector-choice").checked;
+    information_get[0][5] = !document.getElementById("type-object-choice").checked;
+    // 1
+    information_get[1][0] = !document.getElementById("style-colour-choice-none").checked;
+    information_get[1][1] = !document.getElementById("style-colour-choice-name").checked;
+    information_get[1][2] = !document.getElementById("style-colour-choice-hex").checked;
+    // 2
+    information_get[2][0] = !document.getElementById("action_click_choice-none").checked;
+    information_get[2][1] = !document.getElementById("action_click_choice-change_page").checked;
+    information_get[2][2] = !document.getElementById("action_click_choice-copy_to_clipboard").checked;
+    information_get[2][3] = !document.getElementById("action_click_choice-open_file").checked;
+    information_get[2][4] = !document.getElementById("action_click_choice-open_url").checked;
+    information_get[2][5] = !document.getElementById("action_click_choice-run_command").checked;
+    information_get[2][6] = !document.getElementById("action_click_choice-show_dialog").checked;
+    information_get[2][7] = !document.getElementById("action_click_choice-suggest_command").checked;
+    // INIT END;
+    document.getElementById("text-text").disabled = information_get[0][0];
+    document.getElementById("translate-text").disabled = information_get[0][1];
+    document.getElementById("translate-fallback").disabled = information_get[0][1];
+    document.getElementById("translate-component").disabled = information_get[0][1];
+    document.getElementById("keybind-text").disabled = information_get[0][2];
+    document.getElementById("scoreboard-text").disabled = information_get[0][3];
+    document.getElementById("scoreboard-object").disabled = information_get[0][3];
+    document.getElementById("selector-text").disabled = information_get[0][4];
+    document.getElementById("selector-separator").disabled = information_get[0][4];
+    document.getElementById("object-atlas").disabled = information_get[0][5];
+    document.getElementById("object-sprite").disabled = information_get[0][5];
+    document.getElementById("style-colour-select").disabled = information_get[1][1];
+    document.getElementById("style-colour-input").disabled = information_get[1][2];
+    document.getElementById("action-click-change_page-page").disabled = information_get[2][1];
+    document.getElementById("action-click-copy_to_clipboard-value").disabled = information_get[2][2];
+    document.getElementById("action-click-open_file-path").disabled = information_get[2][3];
+    document.getElementById("action-click-open_url-url").disabled = information_get[2][4];
+    document.getElementById("action-click-run_command-command").disabled = information_get[2][5];
+    document.getElementById("action-click-show_dialog-dialog").disabled = information_get[2][6];
+    document.getElementById("action-click-suggest_command-command").disabled = information_get[2][7];
+    // return information_get;
+}
+function calc_json()
+{
+    var is_json = /^(\{|\[)\S*(\}|\])$/i;
+    var lang = document.getElementById("language").value;
+    document.getElementById("result_data").style.color = "black";
+    try
+    {
+        var cache_json = {};
+        // set "type"
+        if(document.getElementById("type-text-choice").checked)
+        {
+            cache_json.type = "text";
+            cache_json.text = document.getElementById("text-text").value;
+        }
+        else if(document.getElementById("type-translatable-choice").checked)
+        {
+            cache_json.type = "translatable";
+            cache_json.translate = document.getElementById("translate-text").value;
+            cache_json.fallback = document.getElementById("translate-fallback").value;
+            if(is_json.test(document.getElementById("translate-component").value))
+            {
+                if(Array.isArray(JSON.parse(document.getElementById("translate-component").value)))
+                {
+                    cache_json.with = JSON.parse(document.getElementById("translate-component").value);
+                }
+                else
+                {
+                    cache_json.with = [JSON.parse(document.getElementById("translate-component").value)];
+                }
+            }
+            else
+            {
+                cache_json.with = [document.getElementById("translate-component").value];
+            }
+        }
+        else if(document.getElementById("type-keybind-choice").checked)
+        {
+            cache_json.type = "keybind";
+            cache_json.keybind = document.getElementById("keybind-text").value;
+        }
+        else if(document.getElementById("type-scoreboard-choice").checked)
+        {
+            cache_json.type = "scoreboard";
+            cache_json.score = {
+                name: document.getElementById("scoreboard-text").value,
+                objective: document.getElementById("scoreboard-object").value
+            };
+        }
+        else if(document.getElementById("type-selector-choice").checked)
+        {
+            cache_json.type = "selector";
+            cache_json.selector = document.getElementById("selector-text").value;
+            cache_json.separator = document.getElementById("selector-separator").value;
+        }
+        else if(document.getElementById("type-object-choice").checked)
+        {
+            cache_json.type = "object";
+            cache_json.atlas = document.getElementById("object-atlas").value;
+            cache_json.sprite = document.getElementById("object-sprite").value;
+        }
+        // set colour
+        colour_name = {
+            colour_0:"black",
+            colour_1:"dark_blue",
+            colour_2:"dark_green",
+            colour_3:"dark_aqua",
+            colour_4:"dark_red",
+            colour_5:"dark_purple",
+            colour_6:"gold",
+            colour_7:"gray",
+            colour_8:"dark_gray",
+            colour_9:"blue",
+            colour_a:"green",
+            colour_b:"aqua",
+            colour_c:"red",
+            colour_d:"light_purple",
+            colour_e:"yellow",
+            colour_f:"white"
+        };
+        /*
+            black     dark_blue    dark_green dark_aqua
+            dark_red  dark_purple  gold       gray
+            dark_gray blue         green      aqua
+            red       light_purple yellow     white
+        */
+        if(document.getElementById("style-colour-choice-name").checked)
+        {
+            colour_key = "colour_" + document.getElementById("style-colour-select").value;
+            cache_json.color = colour_name[colour_key];
+        }
+        else if(document.getElementById("style-colour-choice-hex").checked)
+        {
+            cache_json.color = document.getElementById("style-colour-input").value;
+        }
+        // set font
+        cache_json.font = document.getElementById("style-font-text").value;
+        // set font-style
+        cache_json.bold = (!(document.getElementById("style-text_style-bold-choice").checked || (document.getElementById("use_unchecked").value == "used"))) ? undefined : document.getElementById("style-text_style-bold-choice").checked;
+        cache_json.italic = (!(document.getElementById("style-text_style-italic-choice").checked || (document.getElementById("use_unchecked").value == "used"))) ? undefined : document.getElementById("style-text_style-italic-choice").checked;
+        cache_json.underlined = (!(document.getElementById("style-text_style-underlined-choice").checked || (document.getElementById("use_unchecked").value == "used"))) ? undefined : document.getElementById("style-text_style-underlined-choice").checked;
+        cache_json.strikethrough = (!(document.getElementById("style-text_style-strikethrough-choice").checked || (document.getElementById("use_unchecked").value == "used"))) ? undefined : document.getElementById("style-text_style-strikethrough-choice").checked;
+        cache_json.obfuscated = (!(document.getElementById("style-text_style-obfuscated-choice").checked || (document.getElementById("use_unchecked").value == "used"))) ? undefined : document.getElementById("style-text_style-obfuscated-choice").checked;
+        // set actitivity
+        if(document.getElementById("action_click_choice-change_page").checked)
+        {
+            cache_json.action = "change_page";
+            cache_json.page = document.getElementById("action-click-change_page-page").value;
+        }
+        else if(document.getElementById("action_click_choice-copy_to_clipboard").checked)
+        {
+            cache_json.action = "copy_to_clipboard";
+            cache_json.value = document.getElementById("action-click-copy_to_clipboard-value").value;
+        }
+        else if(document.getElementById("action_click_choice-open_file").checked)
+        {
+            cache_json.action = "open_url";
+            cache_json.path = document.getElementById("action-click-open_url-path").value;
+        }
+        else if(document.getElementById("action_click_choice-open_url").checked)
+        {
+            cache_json.action = "open_file";
+            cache_json.url = document.getElementById("action-click-open_file-url").value;
+        }
+        else if(document.getElementById("action_click_choice-run_command").checked)
+        {
+            cache_json.action = "run_command";
+            cache_json.command = document.getElementById("action-click-run_command-command").value;
+        }
+        else if(document.getElementById("action_click_choice-show_dialog").checked)
+        {
+            cache_json.action = "show_dialog";
+            cache_json.dialog = document.getElementById("action-click-show_dialog-dialog").value;
+            if(is_json.test(document.getElementById("translate-component").value))
+            {
+                cache_json.with = JSON.parse(document.getElementById("translate-component").value);
+            }
+            else
+            {
+                cache_json.with = document.getElementById("translate-component").value;
+            }
+        }
+        else if(document.getElementById("action_click_choice-suggest_command").checked)
+        {
+            cache_json.action = "suggest_command";
+            cache_json.command = document.getElementById("action-click-suggest_command-command").value;
+        }
+        // result output
+        var result_json = cache_json;
+        if(document.getElementById("json_show_type").value == "hide")
+        {
+            result_json.type = undefined;
+        }
+        document.getElementById("icon_data").href = "icon\\Test_Block_Accept.png";
+        document.getElementById("result_data").innerHTML = JSON.stringify(result_json);
+    }
+    catch(err)
+    {
+        document.getElementById("icon_data").href = "icon\\Test_Block_Log.png";
+        error_message = [];
+        error_message[0] = /(Expected ',' or ']' after array element in JSON at position \d+|Expected property name or '}' in JSON at position \d+|Unexpected token '\S+', "\S+" is not valid JSON)/g;
+        error_message[1] = new RegExp("Expected ',' or ']' after array element in JSON at position \\d+","g");
+        error_message[2] = new RegExp("Expected property name or '}' in JSON at position \\d+","g");
+        error_message[3] = new RegExp("Unexpected token '\\S+', \"\\S+\" is not valid JSON","g");
+        if(lang == "eng")
+        {
+            error_message_data = "Sorry, here's a error:\n";
+            if(error_message[0].test(err.message))
+            {
+                error_message_data = error_message_data + "The error probably has this reason:\nYou write a wrong JSON data here. Please correct it.";
+                document.getElementById("result_data").style.color = "red";
+                document.getElementById("result_data").innerHTML = err.stack;
+            }
+            else
+            {
+                error_message_data = error_message_data + err.message + "\nThe error probably made by the author.\nDetailed Information:\nType:" + err.name + "\nMassage:" + err.message + "\n==========\nReturned Stack\n==========\n" + err.stack;
+            }
+        }
+        if(lang == "zhc")
+        {
+            error_message_data = "抱歉，这里出了一个错误：\n";
+            if(error_message[0].test(err.message))
+            {
+                error_message_data = error_message_data + "这个错误可能由于你写了一个错误的JSON数据，请改正它。";
+                document.getElementById("result_data").style.color = "red";
+                document.getElementById("result_data").innerHTML = err.stack;
+            }
+            else
+            {
+                error_message_data = error_message_data + err.message + "\n这个错误可能由作者造成。\n类型：\n" + err.name + "\n信息：\n" + err.message + "\n详细信息：\n" + err.stack;
+            }
+        }
+        if(lang == "zht")
+        {
+            error_message_data = "抱歉，這裏出了一個錯誤：\n";
+            if(error_message[0].test(err.message))
+            {
+                error_message_data = error_message_data + "這個錯誤可能由於你寫了一個錯誤的JSON數據，請改正它。";
+                document.getElementById("result_data").style.color = "red";
+                document.getElementById("result_data").innerHTML = err.stack;
+            }
+            else
+            {
+                error_message_data = error_message_data + err.message + "\n這個錯誤可能由作者造成。\n類型：\n" + err.name + "\n資訊：\n" + err.message + "\n詳細資訊：\n" + err.stack;
+            }
+        }
+        if(lang == "cht")
+        {
+            error_message_data = "抱歉，這裡出了一個錯誤：\n";
+            if(error_message[0].test(err.message))
+            {
+                error_message_data = error_message_data + "這個錯誤可能由於你寫了一個錯誤的JSON數據，請改正它。";
+                document.getElementById("result_data").style.color = "red";
+                document.getElementById("result_data").innerHTML = err.stack;
+            }
+            else
+            {
+                error_message_data = error_message_data + err.message + "\n這個錯誤可能由作者造成。\n類型：\n" + err.name + "\n資訊：\n" + err.message + "\n詳細資訊：\n" + err.stack;
+            }
+        }
+        if(lang == "lzh")
+        {
+            error_message_data = "此出誤：\n";
+            if(error_message[0].test(err.message))
+            {
+                error_message_data = error_message_data + "此誤爲君書誤文，正之，尚可。";
+                document.getElementById("result_data").style.color = "red";
+                document.getElementById("result_data").innerHTML = err.stack;
+            }
+            else
+            {
+                error_message_data = error_message_data + err.message + "\n此誤爲著。\n型：\n" + err.name + "\n文：\n" + err.message + "\n詳：\n" + err.stack;
+            }
+        }
+        window.alert(error_message_data);
+        document.getElementById("icon_data").href = "icon\\Test_Block_Fail.png";
+    }
+}
+</script>
+<style>
+.sans {font-family:"Arial","黑体","SimHei","微软雅黑",sans-serif}
+.serif {font-family:"Times New Roman",Times,"宋体","SimSun",serif;}
+a:link {color:blue;text-decoration:none;}
+a:visited {color:MediumBlue;text-decoration:none;}
+a:hover {text-decoration:underline;}
+button.top {background-color:forestgreen;border:none;color:white;padding:5px 15px;text-decoration:none;margin:2px;cursor:pointer;border:0px;}
+div.border {border:2px solid lightgrey;padding:5px;margin:5px;background-color:white;}
+div.code {background-color:Gainsboro;padding:2px;border-left:10px solid #e0e0e0;border-color:#d0d0d0;}
+div.terminal {background-color:#303030;padding:2px;border-left:10px solid black;border-color:#202020;}
+p.line {display:inline;} 
+select.top {width:120px;padding:5px 10px;border:none;border-radius:0px;background-color:forestgreen;color:white;cursor:pointer;}
+select.top:focus {outline:none;}
+table {border-collapse:collapse;border:1px solid black;}
+tr {border:1px solid black;}
+th {border:1px solid black;}
+td {border:1px solid black;}
+note-eng {font-family:"Times New Roman",Times,serif;color:SteelBlue;}
+</style>
+</head>
+<body>
+<div style="position:fixed;top:0px;left:0px;right:0px;height:30px;background-color:forestgreen;padding:5px;z-index:1000;">
+    <p class="sans line" id="setting" style="color:white;width:100px;">Setting</p>
+    <select class="sans top" id="language" style="width:100px;" onchange="set_language()">
+        <option value="eng">English</option>
+        <option value="zhc">简体中文</option>
+        <option value="zht">繁體中文</option>
+        <option value="cht">正體中文</option>
+        <option value="lzh">文言</option>
+    </select>
+    <select class="sans top" id="json_show_type">
+        <option value="show" id="json_show_type-true">Show Type</option>
+        <option value="hide" id="json_show_type-false">Hide Type</option>
+    </select>
+    <select class="sans top" id="use_unchecked" style="width:160px;">
+        <option value="used" id="use_unchecked-used">Use Unchecked</option>
+        <option value="none" id="use_unchecked-none" selected>Use Checked Only</option>
+    </select>
+    <button class="sans top" style="width:120px;position:absolute;right:0px;" id="calcuclate" onclick="calc_json()">Calculate</button>
+</div>
+<div style="position:absolute;top:40px;left:0px;right:0px;padding:5px;">
+    <p class="sans line" id="put_element">Put your element here:</p>
+    <div class="border" style="left:5px;right:5px;">
+        <p class="sans line" id="element_data_information">Element</p>
+        <div class="border" style="left:5px;right:5px;">
+            <input type="radio" name="type" value="text" id="type-text-choice" onclick="set_disabled()" checked><p class="sans line" id="type-text">Text Only</p><br>
+            <input class="sans" type="text" name="text" id="text-text" placeholder="Please input the text..." size="40">
+        </div>
+        <div class="border" style="left:5px;right:5px;">
+            <input type="radio" name="type" value="translatable" id="type-translatable-choice" onclick="set_disabled()"><p class="sans line" id="type-translatable">Translatable</p><br>
+            <input class="sans" type="text" name="text" id="translate-text" placeholder="Please input the translate key..." size="40"><br>
+            <input class="sans" type="text" name="text" id="translate-fallback" placeholder="Please input the fallback..." size="40">
+            <div class="border" style="left:0px;right:0px;">
+                <p class="sans line" id="translate-with">Add a array of text component:</p><br>
+                <input class="sans" type="text" name="text" id="translate-component" placeholder="Please input the text component..." size="40">
+            </div>
+        </div>
+        <div class="border" style="left:5px;right:5px;">
+            <input type="radio" name="type" value="keybind" id="type-keybind-choice" onclick="set_disabled()"><p class="sans line" id="type-keybind">Key Bind</p><br>
+            <input class="sans" type="text" name="text" id="keybind-text" placeholder="Please input the code of key..." size="40">
+        </div>
+        <div class="border" style="left:5px;right:5px;">
+            <input type="radio" name="type" value="scoreboard" id="type-scoreboard-choice" onclick="set_disabled()"><p class="sans line" id="type-scoreboard">Scoreboard</p><br>
+            <input class="sans" type="text" name="text" id="scoreboard-text" placeholder="Please input the owner of the score..." size="40"><br>
+            <input class="sans" type="text" name="text" id="scoreboard-object" placeholder="Please input the name of the scoreboard..." size="40">
+        </div>
+        <div class="border" style="left:5px;right:5px;">
+            <input type="radio" name="type" value="selector" id="type-selector-choice" onclick="set_disabled()"><p class="sans line" id="type-selector">Entity Name</p><br>
+            <input class="sans" type="text" name="text" id="selector-text" placeholder="Please input the selector..." size="40"><br>
+            <input class="sans" type="text" name="text" id="selector-separator" placeholder="Please input the text component of the separator..." size="40">
+        </div>
+        <div class="border" style="left:5px;right:5px;">
+            <input type="radio" name="type" value="object" id="type-object-choice" onclick="set_disabled()"><p class="sans line" id="type-object">Texture</p><br>
+            <input class="sans" type="text" name="text" id="object-atlas" placeholder="Please input the atlas..." size="40"><br>
+            <input class="sans" type="text" name="text" id="object-sprite" placeholder="Please input the texture ID..." size="40">
+        </div>
+    </div>
+    <div class="border" style="left:5px;right:5px;">
+        <p class="sans line" id="style_data_information">Style</p>
+        <div class="border" style="left:5px;right:5px;">
+            <p class="sans line" id="style-colour">Colour</p><br>
+            <input type="radio" name="colour" value="none" id="style-colour-choice-none" onclick="set_disabled()" checked><p class="sans line" id="style-colour-none">None</p><br>
+            <input type="radio" name="colour" value="name" id="style-colour-choice-name" onclick="set_disabled()"><p class="sans line" id="style-colour-name">Colour Name</p><br>
+            <select class="sans" id="style-colour-select" style="width:200px;">
+                <!--
+                    black     dark_blue    dark_green dark_aqua
+                    dark_red  dark_purple  gold       gray
+                    dark_gray blue         green      aqua
+                    red       light_purple yellow     white
+                -->
+                <option value="0" id="style-colour-0" style="background-color:#000000;color:white;">Black</option>
+                <option value="1" id="style-colour-1" style="background-color:#0000AA;color:white;">Dark Blue</option>
+                <option value="2" id="style-colour-2" style="background-color:#00AA00;color:white;">Dark Green</option>
+                <option value="3" id="style-colour-3" style="background-color:#00AAAA;color:white;">Dark Aqua</option>
+                <option value="4" id="style-colour-4" style="background-color:#AA0000;color:white;">Dark Red</option>
+                <option value="5" id="style-colour-5" style="background-color:#AA00AA;color:white;">Dark Purple</option>
+                <option value="6" id="style-colour-6" style="background-color:#FFAA00;color:black;">Gold</option>
+                <option value="7" id="style-colour-7" style="background-color:#AAAAAA;color:black;">Grey</option>
+                <option value="8" id="style-colour-8" style="background-color:#555555;color:white;">Dark Grey</option>
+                <option value="9" id="style-colour-9" style="background-color:#5555FF;color:black;">Blue</option>
+                <option value="a" id="style-colour-a" style="background-color:#55FF55;color:black;">Green</option>
+                <option value="b" id="style-colour-b" style="background-color:#55FFFF;color:black;">Aqua</option>
+                <option value="c" id="style-colour-c" style="background-color:#FF5555;color:black;">Red</option>
+                <option value="d" id="style-colour-d" style="background-color:#FF55FF;color:black;">Light Purple</option>
+                <option value="e" id="style-colour-e" style="background-color:#FFFF55;color:black;">Yellow</option>
+                <option value="f" id="style-colour-f" style="background-color:#FFFFFF;color:black;">White</option>
+            </select>
+            <br>
+            <input type="radio" name="colour" value="hex" id="style-colour-choice-hex" onclick="set_disabled()"><p class="sans line" id="style-colour-hex">Colour HEX</p><br>
+            <input type="color" id="style-colour-input" value="#228B22">
+        </div>
+        <div class="border" style="left:5px;right:5px;">
+            <p class="sans line" id="style-font">Font</p><br>
+            <input class="sans" type="text" name="text" id="style-font-text" placeholder="Please input the font..." value="minecraft:default" size="40">
+        </div>
+        <div class="border" style="left:5px;right:5px;">
+            <p class="sans line" id="style-text_style">Text Style</p><br>
+            <input type="checkbox" name="text" id="style-text_style-bold-choice"><b class="sans" id="style-text_style-bold">Bold</b><br>
+            <input type="checkbox" name="text" id="style-text_style-italic-choice"><i class="sans" id="style-text_style-italic">Italic</i><br>
+            <input type="checkbox" name="text" id="style-text_style-underlined-choice"><u class="sans" id="style-text_style-underlined">Underlined</u><br>
+            <input type="checkbox" name="text" id="style-text_style-strikethrough-choice"><del class="sans" id="style-text_style-strikethrough">Strike Through</del><br>
+            <input type="checkbox" name="text" id="style-text_style-obfuscated-choice"><p class="sans line" id="style-text_style-obfuscated">Obfuscated</p><br>
+        </div>
+    </div>
+    <div class="border" style="left:5px;right:5px;">
+        <p class="sans line" id="action_data_information">Activity</p><br>
+        <div class="border" style="left:5px;right:5px;">
+            <p class="sans line" id="action-click">Click</p><br>
+            <input type="radio" name="action_click" id="action_click_choice-none" value="none" onclick="set_disabled()" checked><p class="sans line" id="action-click-none">None</p><br>
+            <input type="radio" name="action_click" id="action_click_choice-change_page" value="change_page" onclick="set_disabled()"><p class="sans line" id="action-click-change_page">Change Page</p>
+            <input type="number" id="action-click-change_page-page" value="1" max="100" min="1" step="1"><p class="sans line" id="action-click-page-text">Page Number</p><br>
+            <input type="radio" name="action_click" id="action_click_choice-copy_to_clipboard" value="copy_to_clipboard" onclick="set_disabled()"><p class="sans line" id="action-click-copy_to_clipboard">Copy Text</p>
+            <input class="sans" type="text" name="text" id="action-click-copy_to_clipboard-value" size="40"><br>
+            <input type="radio" name="action_click" id="action_click_choice-open_file" value="open_file" onclick="set_disabled()"><p class="sans line" id="action-click-open_file">Open File</p>
+            <input class="sans" type="text" name="text" id="action-click-open_file-path" size="40"><br>
+            <input type="radio" name="action_click" id="action_click_choice-open_url" value="open_url" onclick="set_disabled()"><p class="sans line" id="action-click-open_url">Open Website</p>
+            <input class="sans" type="text" name="text" id="action-click-open_url-url" size="40"><br>
+            <input type="radio" name="action_click" id="action_click_choice-run_command" value="run_command" onclick="set_disabled()"><p class="sans line" id="action-click-run_command">Run Command</p>
+            <input class="sans" type="text" name="text" id="action-click-run_command-command" size="40"><br>
+            <input type="radio" name="action_click" id="action_click_choice-show_dialog" value="show_dialog" onclick="set_disabled()"><p class="sans line" id="action-click-show_dialog">Show Dialog</p>
+            <input class="sans" type="text" name="text" id="action-click-show_dialog-dialog" size="40" placeholder="Please input the ID or JSON dialog..."><br>
+            <input type="radio" name="action_click" id="action_click_choice-suggest_command" value="suggest_command" onclick="set_disabled()"><p class="sans line" id="action-click-suggest_command">Suggest Command</p>
+            <input class="sans" type="text" name="text" id="action-click-suggest_command-command" size="40"><br>
+        </div>
+        <div class="border" style="left:5px;right:5px;">
+            <p class="sans line" id="action-hover">Hover</p><br>
+            <p class="sans line" id="action-hover-text">Show Text</p><br>
+            <input class="sans" type="text" name="text" id="action-hover-show_text" size="40" placeholder="Empty: None"><br>
+        </div>
+    </div>
+    <p class="sans line" id="result">Result:</p>
+    <div class="border" style="left:5px;right:5px;">
+        <samp id="result_data" style="white-space:pre-wrap;overflow-wrap:break-word;color:black;">{"text":""}</samp>
+    </div>
+</div>
+<script>
+    set_disabled();
+</script>
+</body>
+</html>
