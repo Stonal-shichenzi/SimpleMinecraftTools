@@ -1,1 +1,1 @@
-Click [here](https://stonal-shichenzi.github.io/SimpleMinecraftTools/) to use.
+Click [here](https://stonal-shichenzi.github.top/SimpleMinecraftTools/) to use.
